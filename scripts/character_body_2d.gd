@@ -143,7 +143,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	if Input.is_action_just_released("suck") && swallowed == false:
+	if Input.is_action_just_released("suck") && swallowed == false && isBeam == false:
 		cool_down_timer.start(.75)
 		animated_sprite.play("unsuck")
 	move_and_slide()
