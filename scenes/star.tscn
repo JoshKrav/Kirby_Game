@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3xsg0cj05lo0"]
+
+[ext_resource type="Script" path="res://scripts/star.gd" id="1_81b1a"]
+[ext_resource type="Texture2D" uid="uid://bx4marem2orso" path="res://assets/sprites/star-Photoroom.png" id="2_kpwc8"]
+[ext_resource type="PackedScene" uid="uid://cblbn3iql2h5y" path="res://scenes/star_hit.tscn" id="3_w3om6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1vtr"]
+atlas = ExtResource("2_kpwc8")
+region = Rect2(5, 0, 29, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb4g8"]
+atlas = ExtResource("2_kpwc8")
+region = Rect2(40, 0, 28, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffvas"]
+atlas = ExtResource("2_kpwc8")
+region = Rect2(69, 0, 41, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr5do"]
+atlas = ExtResource("2_kpwc8")
+region = Rect2(110, 0, 41, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vxvrv"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1vtr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb4g8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffvas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xr5do")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j26nl"]
+radius = 6.0
+
+[node name="Star" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_81b1a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.125001, 0.125)
+scale = Vector2(0.591463, 0.570513)
+sprite_frames = SubResource("SpriteFrames_vxvrv")
+animation = &"death"
+autoplay = "default"
+
+[node name="StarHit" parent="." instance=ExtResource("3_w3om6")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StarHit"]
+shape = SubResource("CircleShape2D_j26nl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j26nl")
