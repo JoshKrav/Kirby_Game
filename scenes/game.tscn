@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://davkxdx2yqdyi"]
+[gd_scene load_steps=128 format=3 uid="uid://davkxdx2yqdyi"]
 
 [ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_3issu"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_nwl1m"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://oaiettk1xn0n" path="res://scenes/killzone.tscn" id="5_wmqjm"]
 [ext_resource type="PackedScene" uid="uid://fxjrtahpbigj" path="res://scenes/enemy.tscn" id="6_ebglj"]
 [ext_resource type="Texture2D" uid="uid://b50hct7hargd3" path="res://assets/sprites/beam_hat_sprite_sheet_by_watannabe0125_d8mxzti (1).png" id="7_44uob"]
+[ext_resource type="PackedScene" uid="uid://c3bbg8fnwvx1h" path="res://scenes/punch.tscn" id="8_b5mpw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p8war"]
 texture = ExtResource("3_1kun3")
@@ -995,6 +996,38 @@ region = Rect2(485, 164, 39, 41)
 atlas = ExtResource("7_44uob")
 region = Rect2(524, 164, 39, 41)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u7h8"]
+atlas = ExtResource("7_44uob")
+region = Rect2(4, 273, 44, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wikm"]
+atlas = ExtResource("7_44uob")
+region = Rect2(48, 273, 44, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rp8ry"]
+atlas = ExtResource("7_44uob")
+region = Rect2(92, 273, 44, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvjxm"]
+atlas = ExtResource("7_44uob")
+region = Rect2(172, 273, 38, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7olsm"]
+atlas = ExtResource("7_44uob")
+region = Rect2(212, 273, 56, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pguvr"]
+atlas = ExtResource("7_44uob")
+region = Rect2(268, 273, 56, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r42si"]
+atlas = ExtResource("7_44uob")
+region = Rect2(315, 273, 56, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2rcj"]
+atlas = ExtResource("7_44uob")
+region = Rect2(371, 273, 56, 31)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rh12a"]
 atlas = ExtResource("7_44uob")
 region = Rect2(4, 99, 44, 32)
@@ -1151,6 +1184,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4u7h8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wikm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp8ry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvjxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7olsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pguvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r42si")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2rcj")
+}],
+"loop": true,
+"name": &"punch",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rh12a")
 }, {
 "duration": 1.0,
@@ -1220,6 +1282,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yl0wm"]
+size = Vector2(20, 8.5)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tu17p"]
 distance = -80.0
 
@@ -1282,8 +1347,20 @@ visible = false
 position = Vector2(0, -6)
 scale = Vector2(1.01528, 1)
 sprite_frames = SubResource("SpriteFrames_mssmb")
-animation = &"hurt"
-frame_progress = 0.43776
+animation = &"punch"
+frame = 5
+frame_progress = 0.118618
+
+[node name="PunchTimer" type="Timer" parent="Kirby"]
+one_shot = true
+
+[node name="Punch" parent="Kirby" instance=ExtResource("8_b5mpw")]
+
+[node name="PunchCollision" type="CollisionShape2D" parent="Kirby/Punch"]
+visible = false
+position = Vector2(18, -1)
+shape = SubResource("RectangleShape2D_yl0wm")
+disabled = true
 
 [node name="Killzone" parent="." instance=ExtResource("5_wmqjm")]
 
@@ -1299,3 +1376,4 @@ position = Vector2(199, 13)
 [connection signal="timeout" from="Kirby/Timer" to="Kirby" method="_on_timer_timeout"]
 [connection signal="timeout" from="Kirby/CoolDownTimer" to="Kirby" method="_on_cool_down_timer_timeout"]
 [connection signal="timeout" from="Kirby/SpitoutTimer" to="Kirby" method="_on_spitout_timer_timeout"]
+[connection signal="timeout" from="Kirby/PunchTimer" to="Kirby" method="_on_punch_timer_timeout"]

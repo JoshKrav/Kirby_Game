@@ -14,7 +14,11 @@ var run = false
 
 @onready var timer: Timer = $Timer
 
+@onready var punch_collision: CollisionShape2D = $Punch/PunchCollision
+
 @onready var StarScene = preload("res://scenes/star.tscn")
+
+@onready var punch_timer: Timer = $PunchTimer
 
 @onready var cool_down_timer: Timer = $CoolDownTimer
 
@@ -30,6 +34,10 @@ var swallowed = false
 
 var inSpitOut = false
 
+var lookLeft = false
+
+var lookRight = false
+
 var hurt = false
 
 var swallowed_entity
@@ -42,6 +50,7 @@ var isBeam = false
 
 var isSucking = false
 
+var isPunching = false
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -81,6 +90,11 @@ func _physics_process(delta: float) -> void:
 		SPEED = 100
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	
+	if Input.is_action_just_pressed("suck") && isBeam == true:
+		punch_timer.start(1.2)
+		punch_collision.disabled = false
+		isPunching = true
 	if Input.is_action_just_pressed("suck") && swallowed == false && isBeam == false:
 		isSucking = true
 		animated_sprite.play("suck")
@@ -94,15 +108,23 @@ func _physics_process(delta: float) -> void:
 		if isBeam == true:
 			if direction > 0:
 				beam_kirby.flip_h = false
+				lookRight = true
+				lookLeft = false
 			elif direction < 0:
 				beam_kirby.flip_h = true
+				lookRight = false
+				lookLeft = true
 		else:
 			if direction > 0:
 				animated_sprite.flip_h = false
 				suck.scale.x = 1
+				lookRight = true
+				lookLeft = false
 			elif direction < 0:
 				animated_sprite.flip_h = true
 				suck.scale.x = -1
+				lookRight = false
+				lookLeft = true
 	
 	if direction != null && isSucking == false && inSpitOut == false:
 		if hurt == true:
@@ -120,7 +142,9 @@ func _physics_process(delta: float) -> void:
 				animated_sprite.play("swallowed_jump")
 		elif isBeam == true:
 			if is_on_floor():
-				if direction == 0:
+				if isPunching == true:
+					beam_kirby.play("punch")
+				elif direction == 0:
 					beam_kirby.play("idle")
 				elif run == true:
 					beam_kirby.play("run")
@@ -163,3 +187,9 @@ func _on_cool_down_timer_timeout() -> void:
 func _on_spitout_timer_timeout() -> void:
 	swallowed = false
 	inSpitOut = false
+
+
+func _on_punch_timer_timeout() -> void:
+	punch_collision.disabled = false
+	isPunching = false
+	pass # Replace with function body.

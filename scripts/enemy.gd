@@ -12,9 +12,14 @@ var movement_enabled = true
 
 @onready var kirby: CharacterBody2D = get_node("/root/Game/Kirby")
 
+var knockedback = false
+var knockDirection = 0
+var knockback_force = 300
 func _ready():
 	add_to_group("waddle_doo")
 func _process(delta: float) -> void:
+	if knockedback == true:
+		position.x += knockback_force * knockDirection * delta
 	if movement_enabled == true:
 		if ray_cast_right.is_colliding():
 			var collider = ray_cast_right.get_collider()
