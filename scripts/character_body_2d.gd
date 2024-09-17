@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 var SPEED = 100.0
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -350.0
 
 @onready var kirby: CharacterBody2D = $"."
 var run = false
@@ -92,7 +92,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
 	if Input.is_action_just_pressed("suck") && isBeam == true:
-		punch_timer.start(1.2)
+		punch_timer.start(.9)
 		punch_collision.disabled = false
 		isPunching = true
 	if Input.is_action_just_pressed("suck") && swallowed == false && isBeam == false:
