@@ -4,7 +4,7 @@ extends Area2D
 
 
 func _on_body_entered(body: Node2D) -> void:
-	timer.start()
+	timer.start(0.6)
 
 
 func _on_timer_timeout() -> void:

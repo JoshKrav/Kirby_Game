@@ -1279,7 +1279,7 @@ animations = [{
 size = Vector2(20, 8.5)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tu17p"]
-distance = -80.0
+distance = -116.0
 
 [node name="Game" type="Node2D"]
 
@@ -1355,6 +1355,9 @@ shape = SubResource("RectangleShape2D_yl0wm")
 disabled = true
 
 [node name="Killzone" parent="." instance=ExtResource("5_wmqjm")]
+position = Vector2(128, -25)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_tu17p")
