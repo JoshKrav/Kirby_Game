@@ -92,7 +92,7 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
 	if Input.is_action_just_pressed("suck") && isBeam == true:
-		punch_timer.start(.9)
+		punch_timer.start(1.3)
 		punch_collision.disabled = false
 		isPunching = true
 	if Input.is_action_just_pressed("suck") && swallowed == false && isBeam == false:
@@ -190,6 +190,6 @@ func _on_spitout_timer_timeout() -> void:
 
 
 func _on_punch_timer_timeout() -> void:
-	punch_collision.disabled = false
+	punch_collision.disabled = true
 	isPunching = false
 	pass # Replace with function body.
