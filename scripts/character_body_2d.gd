@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -350.0
 @onready var kirby: CharacterBody2D = $"."
 var run = false
 
+@onready var beam_kirby_attack: AnimatedSprite2D = $BeamKirbyAttack
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -93,7 +94,9 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("suck") && isBeam == true:
 		punch_timer.start(1.3)
+		beam_kirby_attack.visible = true
 		punch_collision.disabled = false
+		beam_kirby.visible = false
 		isPunching = true
 	if Input.is_action_just_pressed("suck") && swallowed == false && isBeam == false:
 		isSucking = true
@@ -143,7 +146,7 @@ func _physics_process(delta: float) -> void:
 		elif isBeam == true:
 			if is_on_floor():
 				if isPunching == true:
-					beam_kirby.play("punch")
+					beam_kirby_attack.play("punch")
 				elif direction == 0:
 					beam_kirby.play("idle")
 				elif run == true:
@@ -192,4 +195,6 @@ func _on_spitout_timer_timeout() -> void:
 func _on_punch_timer_timeout() -> void:
 	punch_collision.disabled = true
 	isPunching = false
+	beam_kirby.visible = true
+	beam_kirby_attack.visible = false
 	pass # Replace with function body.
