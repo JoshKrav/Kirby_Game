@@ -21,7 +21,10 @@ other than the enemies as well, such as pitfalls, spikes etc. The end goal is to
    ![Import](./images/godot.png)  
 
    4.**Have Fun!**
-  
+
+## 🕹️ Current Look
+
+![Import](./images/kirbyimage.png) 
 
    
 #### 🖼️ Images/Sprites
