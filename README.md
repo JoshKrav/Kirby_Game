@@ -7,14 +7,19 @@ other than the enemies as well, such as pitfalls, spikes etc. The end goal is to
 
 ## 🛠 Installation Steps
 
-1. **Download Godot if not done already:**<br>
+1. **Download Godot if not done already:**
+
    You can find Godot on [Steam](https://store.steampowered.com/app/404790/Godot_Engine/) or you can download it directly from their [Website](https://godotengine.org/)
+   
 3. **Clone the repository in your terminal:**
    ```bash
    git clone https://github.com/JoshKrav/Kirby_Game.git
    ```
-3.**Import the repo in godot:**<br>  
-![Import](./images/godot.png)  <br>
+   
+3.**Import the repo in godot:**
+
+![Import](./images/godot.png)  
+
 4.**Have Fun!**
   
 
