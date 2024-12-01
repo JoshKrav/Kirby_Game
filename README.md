@@ -1,5 +1,7 @@
 # Kirby Re-Creation In Godot
 
+ ![Title](./images/Kirby_Title.png)  
+ 
 ## ✒️ Description
 
 Welcome to my attempt at re-creating Kirby! You'll have to fight through enemies using various means such as inhaling,spitting and taking the powers of enemies. There will be obstacles to get through 
