@@ -39,15 +39,5 @@ All sounds are also taken from [SpritersResource](https://www.spriters-resource.
 
 ### 📚 References
 
--   https://cryptography.io/en/latest/
-
--   https://pycryptodome.readthedocs.io/en/latest/src/cipher/cipher.html
-
--   https://pycipher.readthedocs.io/en/master/
-
--   https://docs.python.org/3/library/base64.html
-
--   https://flask.palletsprojects.com/en/stable/
-
--   https://www.geeksforgeeks.org/rail-fence-cipher-encryption-decryption/
+-   [Kirby Series By Nintendo](https://en.wikipedia.org/wiki/Kirby_(series))
 
