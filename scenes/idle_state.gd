@@ -18,5 +18,6 @@ func Update(delta):
 		Transitioned.emit(self,"walkingstate")
 func Enter():
 	animated_sprite_2d.play("idle")
+	kirby.velocity.x=0.0
 func Exit():
 	pass

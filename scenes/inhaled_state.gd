@@ -8,7 +8,7 @@ func Update(delta):
 	if Input.is_action_just_pressed("suck"):
 		Transitioned.emit(self,"inhalestate")
 	if Input.is_action_just_pressed("jump") and kirby.is_on_floor():
-		Transitioned.emit(self,"jumpingstate")
+		Transitioned.emit(self,"inhaledjumpingstate")
 	kirby.direction = Input.get_axis("move_left", "move_right")
 	if kirby.direction:
 		Transitioned.emit(self,"inhaledwalkingstate")
