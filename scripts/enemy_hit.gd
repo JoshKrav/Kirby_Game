@@ -26,6 +26,7 @@ func _on_body_entered(body: Node2D) -> void:
 		timer.start()
 		
 func _take_damage():
+	game_manager.score += 100
 	death_timer.start(.7)
 	animated_sprite_2d.play("hurt")
 	get_parent().movement_enabled = false

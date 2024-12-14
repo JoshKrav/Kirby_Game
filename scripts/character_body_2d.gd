@@ -18,6 +18,8 @@ var swallowed_entity
 
 var isBeam = false
 
+@onready var label: RichTextLabel = $RichTextLabel
+
 var isSucking = false
 
 var isPunching = false
