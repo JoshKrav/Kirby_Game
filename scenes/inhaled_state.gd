@@ -6,7 +6,7 @@ class_name InhaledIdleState
 
 func Update(delta):
 	if Input.is_action_just_pressed("suck"):
-		Transitioned.emit(self,"inhalestate")
+		Transitioned.emit(self,"shootstarstate")
 	if Input.is_action_just_pressed("jump") and kirby.is_on_floor():
 		Transitioned.emit(self,"inhaledjumpingstate")
 	kirby.direction = Input.get_axis("move_left", "move_right")

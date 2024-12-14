@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://davkxdx2yqdyi"]
+[gd_scene load_steps=139 format=3 uid="uid://davkxdx2yqdyi"]
 
 [ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_3issu"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_nwl1m"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://scenes/inhaled_state.gd" id="15_mtnju"]
 [ext_resource type="Script" path="res://scenes/inhaled_jumping_state.gd" id="16_t7jhw"]
 [ext_resource type="Script" path="res://scenes/inhaled_walking_state.gd" id="17_d5qv4"]
+[ext_resource type="Script" path="res://scenes/shoot_star_state.gd" id="18_db8w1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p8war"]
 texture = ExtResource("3_1kun3")
@@ -1405,6 +1406,11 @@ script = ExtResource("16_t7jhw")
 [node name="InhaledWalkingState" type="Node" parent="Kirby/StateMachine"]
 script = ExtResource("17_d5qv4")
 
+[node name="HurtState" type="Node" parent="Kirby/StateMachine"]
+
+[node name="ShootStarState" type="Node" parent="Kirby/StateMachine"]
+script = ExtResource("18_db8w1")
+
 [node name="Killzone" parent="." instance=ExtResource("5_wmqjm")]
 position = Vector2(128, -25)
 collision_layer = 3
@@ -1430,4 +1436,5 @@ position = Vector2(354, 13)
 [connection signal="timeout" from="Kirby/CoolDownTimer" to="Kirby" method="_on_cool_down_timer_timeout"]
 [connection signal="timeout" from="Kirby/CoolDownTimer" to="Kirby/StateMachine/InhaleState" method="_on_cool_down_timer_timeout"]
 [connection signal="timeout" from="Kirby/SpitoutTimer" to="Kirby" method="_on_spitout_timer_timeout"]
+[connection signal="timeout" from="Kirby/SpitoutTimer" to="Kirby/StateMachine/ShootStarState" method="_on_spitout_timer_timeout"]
 [connection signal="timeout" from="Kirby/PunchTimer" to="Kirby" method="_on_punch_timer_timeout"]
