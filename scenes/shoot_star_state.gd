@@ -9,6 +9,7 @@ class_name ShootStarState
 @onready var StarScene = preload("res://scenes/star.tscn")
 @onready var cool_down_timer: Timer = $"../../CoolDownTimer"
 @onready var spitout_timer: Timer = $"../../SpitoutTimer"
+@onready var star_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var unSucking = false;
 func Enter():
@@ -22,9 +23,14 @@ func Enter():
 	game.add_child.call_deferred(star)
 	spitout_timer.start(.7)
 	animated_sprite_2d.play("unsuck")
+	star_sound.play()
 
 func Update(delta):
 	pass
 
 func _on_spitout_timer_timeout() -> void:
 	Transitioned.emit(self,"idlestate")
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	star_sound.stop()

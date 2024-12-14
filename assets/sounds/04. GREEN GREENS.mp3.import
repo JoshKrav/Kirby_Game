@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cc0ot3siv3hku"
+path="res://.godot/imported/04. GREEN GREENS.mp3-3d8fd4da31e3618d233090f91b2bcd12.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/04. GREEN GREENS.mp3"
+dest_files=["res://.godot/imported/04. GREEN GREENS.mp3-3d8fd4da31e3618d233090f91b2bcd12.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

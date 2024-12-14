@@ -1,8 +1,8 @@
-[gd_scene load_steps=143 format=3 uid="uid://davkxdx2yqdyi"]
+[gd_scene load_steps=152 format=3 uid="uid://davkxdx2yqdyi"]
 
 [ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_3issu"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_nwl1m"]
-[ext_resource type="Texture2D" uid="uid://siveo2rqegeb" path="res://assets/sprites/KirbySprites.png" id="1_r4ow8"]
+[ext_resource type="Texture2D" uid="uid://siveo2rqegeb" path="res://assets/sprites/kirbysprites.png" id="1_r4ow8"]
 [ext_resource type="Texture2D" uid="uid://dn2akrcwbb1io" path="res://assets/sprites/Game Boy Advance - Kirby & the Amazing Mirror - Olive Ocean Tiles.png" id="3_1kun3"]
 [ext_resource type="PackedScene" uid="uid://dfjviyjg4nbdf" path="res://scenes/suck.tscn" id="5_3obc5"]
 [ext_resource type="Texture2D" uid="uid://u52snvwxvrjr" path="res://assets/sprites/beamkirby3.png" id="5_chhm2"]
@@ -13,9 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://c3bbg8fnwvx1h" path="res://scenes/punch.tscn" id="8_b5mpw"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="10_qq638"]
 [ext_resource type="Script" path="res://scenes/jumping_state.gd" id="11_qtkoe"]
+[ext_resource type="Script" path="res://scenes/floating_state.gd" id="11_vt28m"]
+[ext_resource type="AudioStream" uid="uid://c2mgmn7kgqb8w" path="res://assets/sounds/float.wav" id="12_54tty"]
 [ext_resource type="Script" path="res://scenes/idle_state.gd" id="12_l0au4"]
+[ext_resource type="AudioStream" uid="uid://bwl8j6w5ajsp3" path="res://assets/sounds/jump.wav" id="12_xnyht"]
 [ext_resource type="Script" path="res://scenes/walking_state.gd" id="13_ahtue"]
 [ext_resource type="Script" path="res://scenes/inhale_state.gd" id="14_l5ttr"]
+[ext_resource type="AudioStream" uid="uid://baq2av0tuvpxo" path="res://assets/sounds/inhale.wav" id="15_bx2oi"]
 [ext_resource type="Script" path="res://scenes/inhaled_state.gd" id="15_mtnju"]
 [ext_resource type="Script" path="res://scenes/inhaled_jumping_state.gd" id="16_t7jhw"]
 [ext_resource type="Script" path="res://scenes/inhaled_walking_state.gd" id="17_d5qv4"]
@@ -23,8 +27,12 @@
 [ext_resource type="Script" path="res://scenes/running_state.gd" id="18_g37uq"]
 [ext_resource type="Script" path="res://scenes/rich_text_label.gd" id="19_3q26g"]
 [ext_resource type="Script" path="res://scenes/beam_kirby_idle.gd" id="19_oi0io"]
+[ext_resource type="AudioStream" uid="uid://dgup5x4r8qmte" path="res://assets/sounds/KSS_Copy_Ability.wav" id="20_8pdef"]
 [ext_resource type="Script" path="res://scenes/beam_kirby_walk.gd" id="20_c4f72"]
 [ext_resource type="Script" path="res://scenes/beam_kirby_jump.gd" id="21_wwjmv"]
+[ext_resource type="Script" path="res://scenes/beam_kirby_attack_state.gd" id="22_ilk4j"]
+[ext_resource type="AudioStream" uid="uid://c837gl5mphwbo" path="res://assets/sounds/Kirby_Star_Spit_Sound_(Kirby_Super_Star).ogg" id="23_c00jc"]
+[ext_resource type="AudioStream" uid="uid://cc0ot3siv3hku" path="res://assets/sounds/04. GREEN GREENS.mp3" id="27_jjrw8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p8war"]
 texture = ExtResource("3_1kun3")
@@ -444,6 +452,34 @@ sources/0 = SubResource("TileSetAtlasSource_p8war")
 atlas = ExtResource("1_r4ow8")
 region = Rect2(176, 100, 28, 25)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_epjyj"]
+atlas = ExtResource("6_mv0f8")
+region = Rect2(128, 153, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vo5v"]
+atlas = ExtResource("6_mv0f8")
+region = Rect2(156, 153, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb6mk"]
+atlas = ExtResource("6_mv0f8")
+region = Rect2(184, 153, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yukdg"]
+atlas = ExtResource("6_mv0f8")
+region = Rect2(212, 153, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wolf"]
+atlas = ExtResource("6_mv0f8")
+region = Rect2(242, 153, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8asr0"]
+atlas = ExtResource("6_mv0f8")
+region = Rect2(270, 153, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muani"]
+atlas = ExtResource("6_mv0f8")
+region = Rect2(127, 150, 31, 30)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4lrnr"]
 atlas = ExtResource("1_r4ow8")
 region = Rect2(145, 156, 25, 26)
@@ -696,6 +732,37 @@ animations = [{
 }],
 "loop": true,
 "name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epjyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vo5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb6mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yukdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wolf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8asr0")
+}],
+"loop": true,
+"name": &"float",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_muani")
+}],
+"loop": true,
+"name": &"float_hover",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1197,99 +1264,57 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yl0wm"]
 size = Vector2(20, 8.5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vogdp"]
-atlas = ExtResource("8_6m0qr")
-region = Rect2(0, 470, 36, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yatj2"]
+atlas = ExtResource("5_chhm2")
+region = Rect2(3, 480, 35, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f677l"]
-atlas = ExtResource("8_6m0qr")
-region = Rect2(37, 470, 36, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_racny"]
+atlas = ExtResource("5_chhm2")
+region = Rect2(38, 480, 35, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8d6oa"]
-atlas = ExtResource("8_6m0qr")
-region = Rect2(74, 470, 36, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyk1x"]
+atlas = ExtResource("5_chhm2")
+region = Rect2(72, 480, 41, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n8k0s"]
-atlas = ExtResource("8_6m0qr")
-region = Rect2(111, 470, 52, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b767"]
+atlas = ExtResource("5_chhm2")
+region = Rect2(160, 480, 56, 40)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vihjl"]
-atlas = ExtResource("8_6m0qr")
-region = Rect2(164, 470, 52, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifxmn"]
+atlas = ExtResource("5_chhm2")
+region = Rect2(143, 533, 66, 38)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pbvng"]
-atlas = ExtResource("8_6m0qr")
-region = Rect2(217, 470, 52, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_orulx"]
+atlas = ExtResource("5_chhm2")
+region = Rect2(85, 571, 75, 38)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q8325"]
-atlas = ExtResource("8_6m0qr")
-region = Rect2(275, 470, 53, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_guxwt"]
-atlas = ExtResource("8_6m0qr")
-region = Rect2(338, 470, 55, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wd26v"]
-atlas = ExtResource("8_6m0qr")
-region = Rect2(400, 470, 55, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_15xaj"]
-atlas = ExtResource("8_6m0qr")
-region = Rect2(463, 470, 55, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kfchf"]
-atlas = ExtResource("8_6m0qr")
-region = Rect2(6, 520, 55, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fqjxk"]
-atlas = ExtResource("8_6m0qr")
-region = Rect2(143, 520, 65, 50)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s1t3t"]
-atlas = ExtResource("8_6m0qr")
-region = Rect2(291, 520, 63, 50)
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3fda"]
+atlas = ExtResource("5_chhm2")
+region = Rect2(0, 612, 67, 49)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r7bu1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vogdp")
+"texture": SubResource("AtlasTexture_yatj2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f677l")
+"texture": SubResource("AtlasTexture_racny")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8d6oa")
+"texture": SubResource("AtlasTexture_tyk1x")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n8k0s")
+"texture": SubResource("AtlasTexture_6b767")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vihjl")
+"texture": SubResource("AtlasTexture_ifxmn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pbvng")
+"texture": SubResource("AtlasTexture_orulx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q8325")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_guxwt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wd26v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_15xaj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kfchf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fqjxk")
-}, {
-"duration": 5.0,
-"texture": SubResource("AtlasTexture_s1t3t")
+"texture": SubResource("AtlasTexture_n3fda")
 }],
 "loop": true,
 "name": &"punch",
@@ -1336,7 +1361,7 @@ disabled = true
 position = Vector2(0, -2)
 scale = Vector2(1.05172, 1)
 sprite_frames = SubResource("SpriteFrames_4r1uu")
-animation = &"fall"
+animation = &"float_hover"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kirby"]
 shape = SubResource("CircleShape2D_lptdt")
@@ -1359,7 +1384,7 @@ visible = false
 position = Vector2(-2, -5)
 scale = Vector2(1.01528, 1)
 sprite_frames = SubResource("SpriteFrames_mssmb")
-animation = &"jump"
+animation = &"hurt"
 
 [node name="PunchTimer" type="Timer" parent="Kirby"]
 one_shot = true
@@ -1377,14 +1402,24 @@ visible = false
 position = Vector2(10, -16)
 sprite_frames = SubResource("SpriteFrames_r7bu1")
 animation = &"punch"
-frame_progress = 0.221132
+frame_progress = 0.717619
 
 [node name="StateMachine" type="Node" parent="Kirby" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("10_qq638")
 initial_state = NodePath("IdleState")
 
+[node name="FloatingState" type="Node" parent="Kirby/StateMachine"]
+script = ExtResource("11_vt28m")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Kirby/StateMachine/FloatingState"]
+stream = ExtResource("12_54tty")
+
 [node name="JumpingState" type="Node" parent="Kirby/StateMachine"]
 script = ExtResource("11_qtkoe")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Kirby/StateMachine/JumpingState"]
+stream = ExtResource("12_xnyht")
+volume_db = 6.0
 
 [node name="IdleState" type="Node" parent="Kirby/StateMachine"]
 script = ExtResource("12_l0au4")
@@ -1395,11 +1430,21 @@ script = ExtResource("13_ahtue")
 [node name="InhaleState" type="Node" parent="Kirby/StateMachine"]
 script = ExtResource("14_l5ttr")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Kirby/StateMachine/InhaleState"]
+stream = ExtResource("15_bx2oi")
+volume_db = 4.0
+
 [node name="InhaledIdleState" type="Node" parent="Kirby/StateMachine"]
 script = ExtResource("15_mtnju")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Kirby/StateMachine/InhaledIdleState"]
+stream = ExtResource("20_8pdef")
+
 [node name="InhaledJumpingState" type="Node" parent="Kirby/StateMachine"]
 script = ExtResource("16_t7jhw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Kirby/StateMachine/InhaledJumpingState"]
+stream = ExtResource("12_xnyht")
 
 [node name="InhaledWalkingState" type="Node" parent="Kirby/StateMachine"]
 script = ExtResource("17_d5qv4")
@@ -1408,6 +1453,9 @@ script = ExtResource("17_d5qv4")
 
 [node name="ShootStarState" type="Node" parent="Kirby/StateMachine"]
 script = ExtResource("18_db8w1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Kirby/StateMachine/ShootStarState"]
+stream = ExtResource("23_c00jc")
 
 [node name="RunningState" type="Node" parent="Kirby/StateMachine"]
 script = ExtResource("18_g37uq")
@@ -1419,6 +1467,7 @@ script = ExtResource("19_oi0io")
 script = ExtResource("21_wwjmv")
 
 [node name="BeamKirbyAttackState" type="Node" parent="Kirby/StateMachine"]
+script = ExtResource("22_ilk4j")
 
 [node name="BeamKirbyWalkState" type="Node" parent="Kirby/StateMachine"]
 script = ExtResource("20_c4f72")
@@ -1469,6 +1518,11 @@ offset_right = -3.0
 text = "   A        D        R
 Left   Right   Run"
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_jjrw8")
+volume_db = -8.0
+
+[connection signal="animation_finished" from="Kirby/AnimatedSprite2D" to="Kirby/StateMachine/FloatingState" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Kirby/Timer" to="Kirby" method="_on_timer_timeout"]
 [connection signal="timeout" from="Kirby/Timer" to="Kirby/StateMachine/InhaleState" method="_on_timer_timeout"]
 [connection signal="timeout" from="Kirby/CoolDownTimer" to="Kirby" method="_on_cool_down_timer_timeout"]
@@ -1476,3 +1530,9 @@ Left   Right   Run"
 [connection signal="timeout" from="Kirby/SpitoutTimer" to="Kirby" method="_on_spitout_timer_timeout"]
 [connection signal="timeout" from="Kirby/SpitoutTimer" to="Kirby/StateMachine/ShootStarState" method="_on_spitout_timer_timeout"]
 [connection signal="timeout" from="Kirby/PunchTimer" to="Kirby" method="_on_punch_timer_timeout"]
+[connection signal="timeout" from="Kirby/PunchTimer" to="Kirby/StateMachine/BeamKirbyAttackState" method="_on_punch_timer_timeout"]
+[connection signal="finished" from="Kirby/StateMachine/JumpingState/AudioStreamPlayer2D" to="Kirby/StateMachine/JumpingState" method="_on_audio_stream_player_2d_finished"]
+[connection signal="finished" from="Kirby/StateMachine/InhaleState/AudioStreamPlayer2D" to="Kirby/StateMachine/InhaleState" method="_on_audio_stream_player_2d_finished"]
+[connection signal="finished" from="Kirby/StateMachine/InhaledIdleState/AudioStreamPlayer2D" to="Kirby/StateMachine/InhaledIdleState" method="_on_audio_stream_player_2d_finished"]
+[connection signal="finished" from="Kirby/StateMachine/InhaledJumpingState/AudioStreamPlayer2D" to="Kirby/StateMachine/InhaledJumpingState" method="_on_audio_stream_player_2d_finished"]
+[connection signal="finished" from="Kirby/StateMachine/ShootStarState/AudioStreamPlayer2D" to="Kirby/StateMachine/ShootStarState" method="_on_audio_stream_player_2d_finished"]

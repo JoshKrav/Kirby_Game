@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://td0d7ei3ngxv"]
+[gd_scene load_steps=5 format=3 uid="uid://td0d7ei3ngxv"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_qugas"]
 [ext_resource type="Theme" uid="uid://coi280fuebyca" path="res://assets/Default.tres" id="2_xajbw"]
 [ext_resource type="Texture2D" uid="uid://ci6swhr3qh2xm" path="res://images/Kirby_Title.png" id="3_j8hcu"]
+[ext_resource type="AudioStream" uid="uid://bsyc14dgcoflc" path="res://assets/sounds/KSS_Grand_Opening.mp3" id="4_et1hi"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -36,6 +37,9 @@ z_index = -1
 position = Vector2(573, 325)
 scale = Vector2(1.08952, 1.09625)
 texture = ExtResource("3_j8hcu")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_et1hi")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
