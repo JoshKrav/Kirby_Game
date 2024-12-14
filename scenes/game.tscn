@@ -1521,11 +1521,11 @@ Left   Right   Run"
 stream = ExtResource("27_jjrw8")
 volume_db = -8.0
 
-[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-script = ExtResource("34_rvo0v")
-
 [node name="Checkpoint" parent="." instance=ExtResource("35_qatj4")]
 position = Vector2(241, -60)
+
+[node name="SaveGame" type="Node2D" parent="."]
+script = ExtResource("34_rvo0v")
 
 [connection signal="animation_finished" from="Kirby/AnimatedSprite2D" to="Kirby/StateMachine/FloatingState" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Kirby/Timer" to="Kirby" method="_on_timer_timeout"]

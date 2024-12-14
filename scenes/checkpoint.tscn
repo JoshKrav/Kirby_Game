@@ -53,9 +53,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b3ycx")
 }],
-"loop": true,
+"loop": false,
 "name": &"open",
-"speed": 8.0
+"speed": 7.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_plsl4"]
@@ -65,13 +65,16 @@ radius = 11.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vspiu")
-frame_progress = 0.664333
+autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("2_aq5km")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_plsl4")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="Area2D" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

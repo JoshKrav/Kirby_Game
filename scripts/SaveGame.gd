@@ -1,13 +1,16 @@
-extends ResourcePreloader
+extends Node2D
 
-var kirby = preload("res://scripts/character_body_2d.gd")
-var game_manager= preload("res://scripts/game_manager.gd")
+@onready var kirby: CharacterBody2D = get_node("/root/Game/Kirby")
+
 
 var save_filename = "user://savegame.tres"
-
+var config = ConfigFile.new()
 func save_game():
-	ResourceSaver.save(save_filename,"res://scripts/SaveGame.gd")
+	config.set_value("kirby","global_position",kirby.global_position)
+	config.save(save_filename)
 func load_data():
-	if ResourceLoader.exists(save_filename):
-		return load(save_filename)
-	return null
+	var err = config.load(save_filename)
+	if err == OK:
+		kirby.global_position = config.get_value("kirby","global_position")
+		return true
+	return false
