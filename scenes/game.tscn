@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=3 uid="uid://davkxdx2yqdyi"]
+[gd_scene load_steps=158 format=3 uid="uid://davkxdx2yqdyi"]
 
 [ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_3issu"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_nwl1m"]
@@ -34,6 +34,9 @@
 [ext_resource type="Script" path="res://scenes/beam_kirby_attack_state.gd" id="22_ilk4j"]
 [ext_resource type="AudioStream" uid="uid://c837gl5mphwbo" path="res://assets/sounds/Kirby_Star_Spit_Sound_(Kirby_Super_Star).ogg" id="23_c00jc"]
 [ext_resource type="AudioStream" uid="uid://cc0ot3siv3hku" path="res://assets/sounds/04. GREEN GREENS.mp3" id="27_jjrw8"]
+[ext_resource type="Texture2D" uid="uid://dyy2qyoxcjjur" path="res://assets/sprites/healthbaroutline2.png" id="32_g4txo"]
+[ext_resource type="Texture2D" uid="uid://bibs07hlmshni" path="res://assets/sprites/healthbarprogress.png" id="33_owhe0"]
+[ext_resource type="Script" path="res://scenes/texture_progress_bar.gd" id="34_6pnrf"]
 [ext_resource type="Script" path="res://scripts/SaveGame.gd" id="34_rvo0v"]
 [ext_resource type="PackedScene" uid="uid://doocq8yxlnxrd" path="res://scenes/checkpoint.tscn" id="35_qatj4"]
 
@@ -1394,10 +1397,10 @@ one_shot = true
 
 [node name="ProgressBar" type="ProgressBar" parent="Kirby"]
 z_index = 1
-offset_left = 76.0
-offset_top = -73.0
-offset_right = 120.0
-offset_bottom = -46.0
+offset_left = 69.0
+offset_top = -123.0
+offset_right = 113.0
+offset_bottom = -96.0
 value = 100.0
 script = ExtResource("9_33bp5")
 
@@ -1487,13 +1490,33 @@ script = ExtResource("20_c4f72")
 [node name="BeamKirbyRunState" type="Node" parent="Kirby/StateMachine"]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Kirby"]
-offset_left = -119.0
-offset_top = 24.0
-offset_right = -10.0
-offset_bottom = 64.0
+offset_left = 54.0
+offset_top = -82.0
+offset_right = 163.0
+offset_bottom = -42.0
 text = "Score:"
 scroll_following = true
 script = ExtResource("19_3q26g")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Kirby"]
+offset_left = -86.0
+offset_top = 20.0
+offset_right = -14.0
+offset_bottom = 45.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("32_g4txo")
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="Kirby"]
+offset_left = -63.0
+offset_top = 32.0
+offset_right = -23.0
+offset_bottom = 42.0
+texture_progress = ExtResource("33_owhe0")
+script = ExtResource("34_6pnrf")
 
 [node name="Killzone" parent="." instance=ExtResource("5_wmqjm")]
 position = Vector2(128, -25)
