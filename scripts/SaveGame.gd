@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var kirby: CharacterBody2D = get_node("/root/Game/Kirby")
-@onready var game_manager: Node = get_node("/root/Game/Kirby")
+@onready var game_manager = get_node("/root/Game/GameManager")
 
 var save_filename = "user://savegame.tres"
 var config = ConfigFile.new()

@@ -12,6 +12,7 @@ func _ready() -> void:
 	if audio_stream is AudioStream:
 		audio_stream.loop = true
 	audio_stream_player_2d.play()
+
 func take_damage():
 	if (health - 20 <= 0 ):
 		game_over()

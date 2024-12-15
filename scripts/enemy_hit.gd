@@ -17,9 +17,10 @@ extends Area2D
 var movement_enabled = true
 
 func _on_body_entered(body: Node2D) -> void:
+	print(kirby.direction)
 	if body == kirby:
 		kirby.hurt = true
-		kirby.velocity.x = -1000
+		kirby.velocity.x = -200
 		kirby.velocity.y = -200
 		game_manager.take_damage()
 		animated_sprite_2d.play("hurt")

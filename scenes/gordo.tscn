@@ -1,0 +1,104 @@
+[gd_scene load_steps=15 format=3 uid="uid://dkquwj25vmul3"]
+
+[ext_resource type="Texture2D" uid="uid://c5347thgadu4g" path="res://assets/sprites/gordos.png" id="1_p7gnh"]
+[ext_resource type="Script" path="res://scenes/gordo.gd" id="2_qqhrg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_741ha"]
+atlas = ExtResource("1_p7gnh")
+region = Rect2(4, 159, 161, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if4fp"]
+atlas = ExtResource("1_p7gnh")
+region = Rect2(175, 159, 161, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1sgk"]
+atlas = ExtResource("1_p7gnh")
+region = Rect2(345, 159, 160, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7syv3"]
+atlas = ExtResource("1_p7gnh")
+region = Rect2(515, 159, 159, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcjh8"]
+atlas = ExtResource("1_p7gnh")
+region = Rect2(686, 159, 158, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uglpn"]
+atlas = ExtResource("1_p7gnh")
+region = Rect2(857, 159, 157, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8fut"]
+atlas = ExtResource("1_p7gnh")
+region = Rect2(1028, 159, 156, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drymj"]
+atlas = ExtResource("1_p7gnh")
+region = Rect2(1200, 159, 154, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l668d"]
+atlas = ExtResource("1_p7gnh")
+region = Rect2(1370, 159, 152, 151)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rfqm"]
+atlas = ExtResource("1_p7gnh")
+region = Rect2(1540, 159, 150, 151)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_km46p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_741ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if4fp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1sgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7syv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcjh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uglpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8fut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drymj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l668d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rfqm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vdq7i"]
+
+[node name="Gordo" type="Node2D"]
+script = ExtResource("2_qqhrg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.201863, 0.215232)
+sprite_frames = SubResource("SpriteFrames_km46p")
+autoplay = "default"
+frame_progress = 0.799611
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_vdq7i")
+
+[connection signal="body_entered" from="Area2D" to="." method="on_collision"]
