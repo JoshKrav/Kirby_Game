@@ -1,4 +1,4 @@
-[gd_scene load_steps=154 format=3 uid="uid://davkxdx2yqdyi"]
+[gd_scene load_steps=155 format=3 uid="uid://davkxdx2yqdyi"]
 
 [ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_3issu"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_nwl1m"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bhqylwfujh4s0" path="res://assets/sprites/KirbySprites2.png" id="6_mv0f8"]
 [ext_resource type="Texture2D" uid="uid://c8itej1b0aa1q" path="res://assets/sprites/BeamKirby2.png" id="8_6m0qr"]
 [ext_resource type="PackedScene" uid="uid://c3bbg8fnwvx1h" path="res://scenes/punch.tscn" id="8_b5mpw"]
+[ext_resource type="Script" path="res://scenes/healthBar.gd" id="9_33bp5"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="10_qq638"]
 [ext_resource type="Script" path="res://scenes/jumping_state.gd" id="11_qtkoe"]
 [ext_resource type="Script" path="res://scenes/floating_state.gd" id="11_vt28m"]
@@ -1391,6 +1392,15 @@ animation = &"hurt"
 [node name="PunchTimer" type="Timer" parent="Kirby"]
 one_shot = true
 
+[node name="ProgressBar" type="ProgressBar" parent="Kirby"]
+z_index = 1
+offset_left = 76.0
+offset_top = -73.0
+offset_right = 120.0
+offset_bottom = -46.0
+value = 100.0
+script = ExtResource("9_33bp5")
+
 [node name="Punch" parent="Kirby" instance=ExtResource("8_b5mpw")]
 
 [node name="PunchCollision" type="CollisionShape2D" parent="Kirby/Punch"]
@@ -1477,10 +1487,10 @@ script = ExtResource("20_c4f72")
 [node name="BeamKirbyRunState" type="Node" parent="Kirby/StateMachine"]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Kirby"]
-offset_left = -118.0
-offset_top = 31.0
-offset_right = -9.0
-offset_bottom = 71.0
+offset_left = -119.0
+offset_top = 24.0
+offset_right = -10.0
+offset_bottom = 64.0
 text = "Score:"
 scroll_following = true
 script = ExtResource("19_3q26g")

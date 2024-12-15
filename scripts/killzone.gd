@@ -8,5 +8,4 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	if save_game.load_data() == false:
-		get_tree().reload_current_scene()
+	save_game.load_data()

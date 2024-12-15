@@ -21,6 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 		kirby.hurt = true
 		kirby.velocity.x = -1000
 		kirby.velocity.y = -200
+		game_manager.take_damage()
 		animated_sprite_2d.play("hurt")
 		get_parent().movement_enabled = false
 		timer.start()

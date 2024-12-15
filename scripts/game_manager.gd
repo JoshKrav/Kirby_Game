@@ -1,6 +1,9 @@
 extends Node
 
-var health = 5
+signal HealthChanged
+
+var health = 100
+var maxHealth = 100
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $"../AudioStreamPlayer2D"
 
 var score = 0
@@ -10,10 +13,11 @@ func _ready() -> void:
 		audio_stream.loop = true
 	audio_stream_player_2d.play()
 func take_damage():
-	if (health - 1 == 0 ):
+	if (health - 20 <= 0 ):
 		game_over()
 	else:
-		health -= 1
+		health -= 20
+	HealthChanged.emit()
 func game_over():
 	health=5
 	
