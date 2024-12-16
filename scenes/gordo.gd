@@ -2,6 +2,10 @@ extends Game_Object
 
 @onready var kirby: CharacterBody2D = get_node("/root/Game/Kirby")
 
+@onready var animated_sprite: AnimatedSprite2D = get_node("/root/Game/Kirby/AnimatedSprite2D")
+
+@onready var beam_kirby: AnimatedSprite2D = get_node("/root/Game/Kirby/BeamKirby")
+
 @onready var game_manager: Node = get_node("/root/Game/GameManager")
 
 var tween: Tween
@@ -18,6 +22,10 @@ func _process(delta:float) -> void:
 
 func on_collision(body: Node2D):
 	if body == kirby:
+		if kirby.isBeam:
+			beam_kirby.play("hurt")
+		else:
+			animated_sprite.play("hurt")
 		game_manager.take_damage()
 		kirby.velocity.x = -200
 		kirby.velocity.y = -200
