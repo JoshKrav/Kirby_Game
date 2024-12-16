@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5gmtcebsgy31"]
+
+[ext_resource type="Script" path="res://title_screen.gd" id="1_pg67j"]
+[ext_resource type="Theme" uid="uid://coi280fuebyca" path="res://assets/Default.tres" id="2_rgpsy"]
+[ext_resource type="AudioStream" uid="uid://s53lsf5t7ium" path="res://assets/sounds/goal.wav" id="3_v7wyd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ccgvp"]
+font_size = 100
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pg67j")
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 218.0
+offset_top = 421.0
+offset_right = 390.0
+offset_bottom = 484.0
+theme = ExtResource("2_rgpsy")
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 739.0
+offset_top = 421.0
+offset_right = 912.0
+offset_bottom = 486.0
+theme = ExtResource("2_rgpsy")
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 42.0
+offset_top = 146.0
+offset_right = 1141.0
+offset_bottom = 299.0
+text = "You Reached The Goal!"
+label_settings = SubResource("LabelSettings_ccgvp")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_v7wyd")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

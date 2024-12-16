@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=3 uid="uid://davkxdx2yqdyi"]
+[gd_scene load_steps=161 format=3 uid="uid://davkxdx2yqdyi"]
 
 [ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_3issu"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_nwl1m"]
@@ -41,6 +41,7 @@
 [ext_resource type="Script" path="res://scenes/enemy_factory.gd" id="40_5m37o"]
 [ext_resource type="PackedScene" uid="uid://dkquwj25vmul3" path="res://scenes/gordo.tscn" id="41_dabjs"]
 [ext_resource type="Script" path="res://scenes/enums.gd" id="42_be1hu"]
+[ext_resource type="PackedScene" uid="uid://cjfa5pvywn6c8" path="res://scenes/win_door.tscn" id="42_toka0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p8war"]
 texture = ExtResource("3_1kun3")
@@ -1597,6 +1598,9 @@ position = Vector2(1614, -50)
 
 [node name="Gordo2" parent="." instance=ExtResource("41_dabjs")]
 position = Vector2(447, -47)
+
+[node name="WinDoor" parent="." instance=ExtResource("42_toka0")]
+position = Vector2(1454, 0)
 
 [connection signal="animation_finished" from="Kirby/AnimatedSprite2D" to="Kirby/StateMachine/FloatingState" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Kirby/Timer" to="Kirby" method="_on_timer_timeout"]
