@@ -17,6 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_pg67j")
 
 [node name="StartButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 218.0
 offset_top = 421.0
 offset_right = 390.0
@@ -25,6 +26,7 @@ theme = ExtResource("2_rgpsy")
 text = "Restart"
 
 [node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 739.0
 offset_top = 421.0
 offset_right = 912.0
@@ -33,6 +35,7 @@ theme = ExtResource("2_rgpsy")
 text = "Quit"
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 42.0
 offset_top = 146.0
 offset_right = 1141.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=168 format=3 uid="uid://davkxdx2yqdyi"]
+[gd_scene load_steps=170 format=3 uid="uid://davkxdx2yqdyi"]
 
 [ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_3issu"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_nwl1m"]
@@ -45,6 +45,7 @@
 [ext_resource type="Script" path="res://scenes/enums.gd" id="42_be1hu"]
 [ext_resource type="PackedScene" uid="uid://cjfa5pvywn6c8" path="res://scenes/win_door.tscn" id="42_toka0"]
 [ext_resource type="PackedScene" uid="uid://csjuipypghhsm" path="res://scenes/health.tscn" id="43_6l4b3"]
+[ext_resource type="Script" path="res://scenes/lives.gd" id="46_2wmus"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p8war"]
 texture = ExtResource("3_1kun3")
@@ -1374,6 +1375,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_sk87n"]
+font_size = 13
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tu17p"]
 distance = -116.0
 
@@ -1570,6 +1574,15 @@ offset_right = -23.0
 offset_bottom = 42.0
 texture_progress = ExtResource("33_owhe0")
 script = ExtResource("34_6pnrf")
+
+[node name="Lives" type="Label" parent="Kirby"]
+offset_left = 55.0
+offset_top = -62.0
+offset_right = 95.0
+offset_bottom = -39.0
+text = "Lives:"
+label_settings = SubResource("LabelSettings_sk87n")
+script = ExtResource("46_2wmus")
 
 [node name="Killzone" parent="." instance=ExtResource("5_wmqjm")]
 position = Vector2(128, -25)

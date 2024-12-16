@@ -4,11 +4,13 @@ signal HealthChanged
 
 var health = 100
 var maxHealth = 100
+var lives = 3
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $"../AudioStreamPlayer2D"
 @onready var game: Node2D = $".."
 @onready var EnemyScene = preload("res://scenes/enemy.tscn")
 @onready var enums: Node = $"../Enums"
 @onready var enemy_factory: Node = $"../EnemyFactory"
+@onready var save_game: Node2D = $"../SaveGame"
 
 var score = 0
 func _ready() -> void:
@@ -33,7 +35,12 @@ func take_damage():
 		health -= 20
 	HealthChanged.emit()
 func game_over():
-	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	if lives > 0:
+		lives-=1
+		health = 100
+		save_game.load_data()
+	else:
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	
 func heal():
 	if health+20 <= 100:
