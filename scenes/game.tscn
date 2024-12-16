@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dfjviyjg4nbdf" path="res://scenes/suck.tscn" id="5_3obc5"]
 [ext_resource type="Texture2D" uid="uid://u52snvwxvrjr" path="res://assets/sprites/beamkirby3.png" id="5_chhm2"]
 [ext_resource type="PackedScene" uid="uid://oaiettk1xn0n" path="res://scenes/killzone.tscn" id="5_wmqjm"]
-[ext_resource type="PackedScene" uid="uid://fxjrtahpbigj" path="res://scenes/enemy.tscn" id="6_ebglj"]
 [ext_resource type="Texture2D" uid="uid://bhqylwfujh4s0" path="res://assets/sprites/KirbySprites2.png" id="6_mv0f8"]
 [ext_resource type="Texture2D" uid="uid://c8itej1b0aa1q" path="res://assets/sprites/BeamKirby2.png" id="8_6m0qr"]
 [ext_resource type="PackedScene" uid="uid://c3bbg8fnwvx1h" path="res://scenes/punch.tscn" id="8_b5mpw"]
@@ -41,6 +40,7 @@
 [ext_resource type="LabelSettings" uid="uid://bwvsl5cb0apxk" path="res://assets/fonts/font_settings.tres" id="36_kmlmp"]
 [ext_resource type="Script" path="res://scenes/enemy_factory.gd" id="40_5m37o"]
 [ext_resource type="PackedScene" uid="uid://dkquwj25vmul3" path="res://scenes/gordo.tscn" id="41_dabjs"]
+[ext_resource type="Script" path="res://scenes/enums.gd" id="42_be1hu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p8war"]
 texture = ExtResource("3_1kun3")
@@ -1336,6 +1336,14 @@ distance = -116.0
 
 [node name="Game" type="Node2D"]
 
+[node name="Enums" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("42_be1hu")
+
+[node name="EnemyFactory" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("40_5m37o")
+
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_nwl1m")
@@ -1521,12 +1529,6 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_tu17p")
 
-[node name="WaddleDoo3" parent="." instance=ExtResource("6_ebglj")]
-position = Vector2(719, -83)
-
-[node name="WaddleDoo4" parent="." instance=ExtResource("6_ebglj")]
-position = Vector2(1078, 12)
-
 [node name="Label" type="Label" parent="."]
 offset_left = -78.0
 offset_top = -71.0
@@ -1554,9 +1556,6 @@ position = Vector2(241, -60)
 
 [node name="SaveGame" type="Node2D" parent="."]
 script = ExtResource("34_rvo0v")
-
-[node name="EnemyFactory" type="Node" parent="."]
-script = ExtResource("40_5m37o")
 
 [node name="Label3" type="Label" parent="."]
 offset_left = 136.0
