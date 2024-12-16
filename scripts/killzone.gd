@@ -8,6 +8,5 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	game_manager.score -= 200
 	game_manager.game_over() 
 	save_game.load_data()

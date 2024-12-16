@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://td0d7ei3ngxv"]
+[gd_scene load_steps=6 format=3 uid="uid://td0d7ei3ngxv"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_qugas"]
 [ext_resource type="Theme" uid="uid://coi280fuebyca" path="res://assets/Default.tres" id="2_xajbw"]
 [ext_resource type="Texture2D" uid="uid://ci6swhr3qh2xm" path="res://images/Kirby_Title.png" id="3_j8hcu"]
 [ext_resource type="AudioStream" uid="uid://bsyc14dgcoflc" path="res://assets/sounds/KSS_Grand_Opening.mp3" id="4_et1hi"]
+[ext_resource type="Script" path="res://scripts/SaveGame.gd" id="5_ttnwj"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -41,5 +42,19 @@ texture = ExtResource("3_j8hcu")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_et1hi")
 
+[node name="SaveData" type="Node2D" parent="."]
+script = ExtResource("5_ttnwj")
+
+[node name="NewGame" type="Button" parent="."]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 517.0
+offset_right = 643.0
+offset_bottom = 580.0
+theme = ExtResource("2_xajbw")
+text = "New Game
+"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="NewGame" to="." method="_on_new_game_pressed"]

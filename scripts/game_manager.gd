@@ -24,6 +24,10 @@ func _ready() -> void:
 	add_enemy_to_scene(new_enemy,Vector2(1078,12))
 	new_enemy = enemy_factory.create_enemy(enums.EnemyType.waddledee)
 	add_enemy_to_scene(new_enemy,Vector2(338,12))
+	new_enemy = enemy_factory.create_enemy(enums.EnemyType.waddledee)
+	add_enemy_to_scene(new_enemy,Vector2(1090,12))
+	new_enemy = enemy_factory.create_enemy(enums.EnemyType.waddledoo)
+	add_enemy_to_scene(new_enemy,Vector2(1110,12))
 
 func add_enemy_to_scene(new_enemy,position):
 	new_enemy.global_position = position
@@ -36,8 +40,10 @@ func take_damage():
 	HealthChanged.emit()
 func game_over():
 	if lives > 0:
+		score-=100
 		lives-=1
 		health = 100
+		HealthChanged.emit()
 		save_game.load_data()
 	else:
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")

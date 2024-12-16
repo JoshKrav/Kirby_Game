@@ -10,6 +10,7 @@ func Update(delta):
 		Transitioned.emit(self,"shootstarstate")
 	if Input.is_action_just_pressed("jump") and kirby.is_on_floor():
 		Transitioned.emit(self,"inhaledjumpingstate")
+	print(kirby.swallowed_entity)
 	if Input.is_action_just_pressed("crouch") && kirby.swallowed_entity[0] == "waddle_doo":
 		audio_stream_player_2d.play()
 		Transitioned.emit(self,"beamkirbyidlestate")

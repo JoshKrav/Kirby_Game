@@ -1602,10 +1602,10 @@ text = "Controls
 label_settings = ExtResource("36_kmlmp")
 
 [node name="Label2" type="Label" parent="."]
-offset_left = -114.0
-offset_top = -110.0
-offset_right = 68.0
-offset_bottom = -61.0
+offset_left = -125.0
+offset_top = -54.0
+offset_right = 57.0
+offset_bottom = -5.0
 text = " A      D      R    Jump
 Left   Right  Run spacebar"
 label_settings = ExtResource("36_kmlmp")
@@ -1634,9 +1634,11 @@ offset_left = 650.0
 offset_top = -164.0
 offset_right = 806.0
 offset_bottom = -115.0
-text = "Inhale  an enemy using V
-Swallow using S"
+text = "Inhale an enemy using V
+Swallow using S or spit
+out using v"
 label_settings = ExtResource("36_kmlmp")
+horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="."]
 offset_left = 323.0
