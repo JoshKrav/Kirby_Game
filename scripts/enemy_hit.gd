@@ -6,6 +6,8 @@ extends Area2D
 
 @onready var animated_sprite: AnimatedSprite2D = get_node("/root/Game/Kirby/AnimatedSprite2D")
 
+@onready var beam_kirby: AnimatedSprite2D = get_node("/root/Game/Kirby/BeamKirby")
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
 
 @onready var timer: Timer = $"../Timer"
@@ -23,7 +25,10 @@ func _on_body_entered(body: Node2D) -> void:
 		kirby.velocity.y = -200
 		game_manager.take_damage()
 		animated_sprite_2d.play("hurt")
-		animated_sprite.play("hurt")
+		if kirby.isBeam:
+			beam_kirby.play("hurt")
+		else:
+			animated_sprite.play("hurt")
 		get_parent().movement_enabled = false
 		timer.start()
 		

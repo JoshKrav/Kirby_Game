@@ -14,6 +14,7 @@ func Update(delta):
 	if kirby.direction:
 		Transitioned.emit(self,"beamkirbywalkstate")
 func Enter():
+	kirby.isBeam = true
 	if animated_sprite_2d != null:
 		animated_sprite_2d.queue_free()
 	beam_kirby.visible = true
