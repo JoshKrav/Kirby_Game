@@ -18,7 +18,11 @@ func Enter():
 func Exit():
 	pass
 
-
+func Update(delta):
+	if kirby.direction > 0:
+		beam_kirby_attack.flip_h = false
+	elif kirby.direction < 0:
+		beam_kirby_attack.flip_h = true
 func _on_punch_timer_timeout() -> void:
 	punch_collision.disabled = true
 	beam_kirby.visible = true
