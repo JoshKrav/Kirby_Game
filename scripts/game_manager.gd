@@ -33,5 +33,5 @@ func take_damage():
 		health -= 20
 	HealthChanged.emit()
 func game_over():
-	health=5
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	
