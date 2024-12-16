@@ -23,7 +23,10 @@ var knockedback = false
 var knockDirection = 0
 var knockback_force = 300
 func _ready():
-	add_to_group("waddle_doo")
+	if self.name == "WaddleDoo":
+		add_to_group("waddle_doo")
+	elif self.name == "WaddleDee":
+		add_to_group("waddle_dee")
 func _process(delta: float) -> void:
 	if knockedback == true:
 		position.x += knockback_force * knockDirection * delta

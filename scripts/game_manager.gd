@@ -20,6 +20,8 @@ func _ready() -> void:
 	add_enemy_to_scene(new_enemy,Vector2(719,-83))
 	new_enemy = enemy_factory.create_enemy(enums.EnemyType.waddledoo)
 	add_enemy_to_scene(new_enemy,Vector2(1078,12))
+	new_enemy = enemy_factory.create_enemy(enums.EnemyType.waddledee)
+	add_enemy_to_scene(new_enemy,Vector2(338,12))
 
 func add_enemy_to_scene(new_enemy,position):
 	new_enemy.global_position = position

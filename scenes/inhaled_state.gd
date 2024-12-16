@@ -13,6 +13,8 @@ func Update(delta):
 	if Input.is_action_just_pressed("crouch") && kirby.swallowed_entity[0] == "waddle_doo":
 		audio_stream_player_2d.play()
 		Transitioned.emit(self,"beamkirbyidlestate")
+	elif Input.is_action_just_pressed("crouch") && kirby.swallowed_entity[0] == "waddle_dee":
+		Transitioned.emit(self,"idlestate")
 	kirby.direction = Input.get_axis("move_left", "move_right")
 	if kirby.direction:
 		Transitioned.emit(self,"inhaledwalkingstate")

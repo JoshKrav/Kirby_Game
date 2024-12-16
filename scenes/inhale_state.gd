@@ -6,7 +6,8 @@ class_name InhaleState
 @onready var kirby: Kirby = $"../.."
 @onready var timer: Timer = $"../../Timer"
 @onready var inhale_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
+var inhale_stale_frame = 2
+var timer_time = .75
 @onready var cool_down_timer: Timer = $"../../CoolDownTimer"
 var unSucking = false;
 func Enter():
@@ -16,17 +17,17 @@ func Enter():
 	kirby.velocity.y = 0
 	kirby.velocity.x = 0
 	inhale_sound.play()
-	timer.start(.75)
+	timer.start(timer_time)
 
 func Update(delta):
 	
 	if Input.is_action_just_released("suck") && unSucking == false:
-		cool_down_timer.start(.75)
+		cool_down_timer.start(timer_time)
 		unSucking == true
 		animated_sprite_2d.play("unsuck")
 func _on_timer_timeout() -> void:
 	animated_sprite_2d.stop()
-	animated_sprite_2d.frame = 2 
+	animated_sprite_2d.frame = inhale_stale_frame
 	pass # Replace with function body.
 
 func Exit():
