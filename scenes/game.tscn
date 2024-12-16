@@ -1,4 +1,4 @@
-[gd_scene load_steps=161 format=3 uid="uid://davkxdx2yqdyi"]
+[gd_scene load_steps=162 format=3 uid="uid://davkxdx2yqdyi"]
 
 [ext_resource type="Script" path="res://scripts/character_body_2d.gd" id="1_3issu"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_nwl1m"]
@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://dkquwj25vmul3" path="res://scenes/gordo.tscn" id="41_dabjs"]
 [ext_resource type="Script" path="res://scenes/enums.gd" id="42_be1hu"]
 [ext_resource type="PackedScene" uid="uid://cjfa5pvywn6c8" path="res://scenes/win_door.tscn" id="42_toka0"]
+[ext_resource type="PackedScene" uid="uid://csjuipypghhsm" path="res://scenes/health.tscn" id="43_6l4b3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p8war"]
 texture = ExtResource("3_1kun3")
@@ -1594,13 +1595,78 @@ text = "Attack using V"
 label_settings = ExtResource("36_kmlmp")
 
 [node name="Gordo" parent="." instance=ExtResource("41_dabjs")]
-position = Vector2(1614, -50)
+position = Vector2(1614, -45)
 
 [node name="Gordo2" parent="." instance=ExtResource("41_dabjs")]
 position = Vector2(447, -47)
 
 [node name="WinDoor" parent="." instance=ExtResource("42_toka0")]
-position = Vector2(1454, 0)
+position = Vector2(2250, -37)
+
+[node name="Health" parent="." instance=ExtResource("43_6l4b3")]
+position = Vector2(574, -41)
+
+[node name="Health2" parent="." instance=ExtResource("43_6l4b3")]
+position = Vector2(988, 13)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("35_qatj4")]
+position = Vector2(1482, -2)
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 2234.0
+offset_top = -96.0
+offset_right = 2274.0
+offset_bottom = -73.0
+text = "Goal!"
+label_settings = ExtResource("36_kmlmp")
+
+[node name="Gordo3" parent="." instance=ExtResource("41_dabjs")]
+position = Vector2(1768, -111)
+
+[node name="Gordo4" parent="." instance=ExtResource("41_dabjs")]
+position = Vector2(1849, -36)
+
+[node name="Gordo5" parent="." instance=ExtResource("41_dabjs")]
+position = Vector2(1947, -116)
+
+[node name="Gordo6" parent="." instance=ExtResource("41_dabjs")]
+position = Vector2(2019, -34)
+
+[node name="Gordo7" parent="." instance=ExtResource("41_dabjs")]
+position = Vector2(2068, -90)
+
+[node name="Gordo8" parent="." instance=ExtResource("41_dabjs")]
+position = Vector2(2004, -174)
+
+[node name="Gordo9" parent="." instance=ExtResource("41_dabjs")]
+position = Vector2(1847, -176)
+
+[node name="Gordo10" parent="." instance=ExtResource("41_dabjs")]
+position = Vector2(1958, 47)
+
+[node name="Gordo11" parent="." instance=ExtResource("41_dabjs")]
+position = Vector2(1774, 50)
+
+[node name="Gordo12" parent="." instance=ExtResource("41_dabjs")]
+position = Vector2(2114, 25)
+
+[node name="Gordo14" parent="." instance=ExtResource("41_dabjs")]
+position = Vector2(1936, -222)
+
+[node name="Gordo15" parent="." instance=ExtResource("41_dabjs")]
+position = Vector2(2084, -208)
+
+[node name="Gordo16" parent="." instance=ExtResource("41_dabjs")]
+position = Vector2(2167, -73)
+
+[node name="Gordo17" parent="." instance=ExtResource("41_dabjs")]
+position = Vector2(1786, -227)
+
+[node name="Health3" parent="." instance=ExtResource("43_6l4b3")]
+position = Vector2(1901, -43)
+
+[node name="Health4" parent="." instance=ExtResource("43_6l4b3")]
+position = Vector2(2129, -128)
 
 [connection signal="animation_finished" from="Kirby/AnimatedSprite2D" to="Kirby/StateMachine/FloatingState" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Kirby/Timer" to="Kirby" method="_on_timer_timeout"]

@@ -35,3 +35,7 @@ func take_damage():
 func game_over():
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	
+func heal():
+	if health+20 <= 100:
+		health+=20
+		HealthChanged.emit()
